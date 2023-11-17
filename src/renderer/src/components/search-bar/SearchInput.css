@@ -1,0 +1,8 @@
+.search-wrapper{
+  display: flex;
+  width: 30vw;
+}
+
+.search-wrapper > .icon-wrapper {
+  transform: translateX(-30px);
+}

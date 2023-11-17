@@ -1,0 +1,11 @@
+.logo-wrapper.small{
+  width: 12px;
+}
+
+.logo-wrapper.normal{
+  width: 14px;
+}
+
+.logo-wrapper.large{
+  width: 18px;
+}

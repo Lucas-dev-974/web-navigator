@@ -1,7 +1,7 @@
 import { JSXElement, mergeProps } from "solid-js";
 import "./IconWrapper.css";
 
-enum IconSizeEnum {
+export enum IconSizeEnum {
   small,
   normal,
   large
@@ -17,7 +17,7 @@ export function IconWrapper(props: IconWrapperProps): JSXElement {
   const Icon = (): JSXElement => props.icon;
   return (
     <div
-      class="logo-wrapper"
+      class="icon-wrapper"
       classList={{
         small: mergedProps.size == IconSizeEnum.small,
         normal: mergedProps.size == IconSizeEnum.normal,

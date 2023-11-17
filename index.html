@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Browser</title>
+    <style> 
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #urlBar {
+            height: 30px;
+            background: #333;
+            color: white;
+            padding: 5px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+        #tabs {
+            display: flex;
+            background: #eee;
+            padding: 5px;
+        }
+
+        .tab {
+            margin-right: 5px;
+            padding: 5px;
+            cursor: pointer;
+            background: #ddd;
+        }
+
+        #webview {
+            height: calc(100vh);
+            width: 100vw;
+            /* background-color: red; */
+        }
+        webview {
+            display: flex;  
+            width: 100%;
+            height: 98%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="urlBar">
+        <span>URL:</span>
+        <input type="text" id="urlInput" style="flex: 1;">
+     
+        <button onclick="loadURL()">Go</button>
+    </div>
+    <div id="tabs"></div>
+    <webview id="webview" src="https://www.google.com">   </webview>
+
+    <script>
+        const webview = document.getElementById('webview');
+        const urlInput = document.getElementById('urlInput');
+        const tabsContainer = document.getElementById('tabs');
+
+        function loadURL() {
+            const url = urlInput.value;
+            webview.src = url;
+        }
+
+        webview.addEventListener('did-start-loading', () => {
+            urlInput.value = webview.src;
+        });
+
+        webview.addEventListener('new-window', (e) => {
+            const protocol = require('url').parse(e.url).protocol;
+            if (protocol === 'http:' || protocol === 'https:') {
+                webview.src = e.url;
+            }
+        });
+
+        webview.addEventListener('did-navigate', () => {
+            urlInput.value = webview.src;
+        });
+    </script>
+</body>
+</html>

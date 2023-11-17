@@ -1,6 +1,14 @@
-export function LogoIcon() {
+import { JSXElement } from "solid-js";
+
+export function LogoIcon(): JSXElement {
   return (
-    <svg width="auto" height="auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="auto"
+      height="auto"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M18.816 13.58C20.772 15.405 21.973 17.029 22 18.025M18.572 18.618C16.474 17.984 13.628 16.588 10.653 14.642C5.183 11.063 1.349 6.978 2.093 5.519C2.413 4.891 3.684 4.919 5.387 5.406"
         stroke="#AFA2FA"
@@ -16,5 +24,5 @@ export function LogoIcon() {
         stroke-linejoin="round"
       />
     </svg>
-  )
+  );
 }

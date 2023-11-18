@@ -1,5 +1,5 @@
 doubleQuote: true
-semi: false
+semi: true
 printWidth: 100
 trailingComma: none
 tabWidth: 2

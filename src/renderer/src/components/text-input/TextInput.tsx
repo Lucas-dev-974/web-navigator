@@ -1,8 +1,9 @@
-import { JSXElement } from "solid-js";
+import { JSXElement, mergeProps } from "solid-js";
 
 import "./TextInput.css";
 
 interface TextInputProps {
+  type?: string;
   placeholder?: string;
   defautlValue?: string;
   onInput?: (value: string) => void;
@@ -10,6 +11,7 @@ interface TextInputProps {
 }
 
 export function TextInput(props: TextInputProps): JSXElement {
+  const mergedProps = mergeProps({ type: "string" }, props);
   function onInput(event: Event & { target: HTMLInputElement }): void {
     if (props.onInput) {
       props.onInput(event.target.value);
@@ -21,14 +23,19 @@ export function TextInput(props: TextInputProps): JSXElement {
     if (props.onKeyPress) props.onKeyPress(key);
   }
 
+  let pattern: { pattern: string } | undefined;
+  // eslint-disable-next-line solid/reactivity
+  if (mergedProps.type == "url") pattern = { pattern: "https://.*" };
+
   return (
     <input
       class="text-input"
-      type="text"
+      type={mergedProps.type}
       onInput={onInput}
       onKeyPress={onKeyPress}
       value={props.defautlValue ?? ""}
       placeholder={props.placeholder}
+      {...pattern}
     />
   );
 }

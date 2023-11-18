@@ -13,7 +13,7 @@ interface SearchBarProps {
 export function SearchBar(props: SearchBarProps): JSXElement {
   return (
     <div class="search-wrapper">
-      <TextInput defautlValue={props.defaultValue} placeholder="Recherche" />
+      <TextInput type="url" placeholder="https://google.com" defautlValue={props.defaultValue} />
       <IconWrapper icon={<LoopIcon />} size={IconSizeEnum.large} />
     </div>
   );

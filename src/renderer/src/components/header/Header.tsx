@@ -1,17 +1,25 @@
 import { LogoIcon } from "@renderer/icons/LogoIcon";
-import { SearchBar } from "../search-bar/Searchbar";
-import "solid-js"
-import {createSignal} from "solid-js"
+import { JSXElement } from "solid-js";
+import { SearchBar } from "../search-bar/SearchInput";
+import { IconSizeEnum, IconWrapper } from "../logo-wrapper/IconWrapper";
+import Versions from "../Versions";
 
-export const [signal, setSignale] = createSignal("test")
+import "./Header.css";
 
-export function HeaderApp() {
+export function HeaderApp(): JSXElement {
   return (
     <header class="header-app">
-      <span class="header-logo-container">
-        <LogoIcon />
-      </span>
-      <SearchBar value={signal()} />
+      <section>
+        <IconWrapper icon={<LogoIcon />} size={IconSizeEnum.large} />
+      </section>
+
+      <section>
+        <SearchBar defaultValue="" />
+      </section>
+
+      <section>
+        <Versions />
+      </section>
     </header>
-  )
+  );
 }

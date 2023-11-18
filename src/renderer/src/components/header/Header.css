@@ -1,0 +1,12 @@
+.header-app {
+  height: 60px;
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark-light);
+}
+
+.header-app > section {
+  flex: 1;
+}

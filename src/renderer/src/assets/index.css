@@ -1,20 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Chivo:wght@100&family=Mulish:wght@200;300;400;500;600;700;800&family=Nunito:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Chivo:wght@100&family=Mulish:wght@200;300;400;500;600;700;800&family=Nunito:wght@300&display=swap"); */
+@import "./root.css";
 
 body {
   display: flex;
   flex-direction: column;
-  font-family:
-    "Mulish",
-    sans-serif BlinkMacSystemFont,
-    "Helvetica Neue",
-    "Segoe UI",
-    "Oxygen",
-    "Ubuntu",
-    "Cantarell",
-    "Open Sans",
-    sans-serif;
+  font-family: "Mulish", sans-serif;
   color: #86a5b1;
-  background-color: #2f3241;
+  background-color: var(--dark);
 }
 
 * {

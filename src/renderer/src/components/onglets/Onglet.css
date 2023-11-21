@@ -19,10 +19,17 @@
 .onglet-close:hover {
  fill: #9c2626;
 }
+
+.onglet-list-wrapper{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background-color: var(--dark-light);
+  border-bottom: 0.0001em solid rgba(86, 66, 27, 0.315)
+}
+
 .onglet-list{
   display: flex;
   gap: 5px;
   padding: 5px 0;
-  background-color: var(--dark-light);
-  border-bottom: 0.0001em solid rgba(86, 66, 27, 0.315)
 }

@@ -5,7 +5,7 @@ import { Onglet } from "./Onglet";
 export function OngletList(): JSXElement {
   return (
     <div class="onglet-list">
-      <For each={webviews()}>{(webview) => <Onglet name={webview.name} />}</For>
+      <For each={webviews()}>{(webview) => <Onglet webview={webview} />}</For>
     </div>
   );
 }

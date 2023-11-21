@@ -2,9 +2,10 @@ import { CloseFilledCircleIcon } from "@renderer/icons/CloseFilledCircleIcon";
 import { JSXElement, createSignal } from "solid-js";
 
 import "./Onglet.css";
+import { WebviewManager, WebviewType, setCurrentWeview } from "@renderer/webview.manager";
 
 interface OngletProps {
-  name: string;
+  webview: WebviewType;
 }
 
 const [ondrag, setondrag] = createSignal<HTMLDivElement>();
@@ -38,6 +39,14 @@ export function Onglet(props: OngletProps): JSXElement {
     target.style.opacity = "1";
   }
 
+  function onClick(): void {
+    setCurrentWeview();
+  }
+
+  function onClickClose(): void {
+    WebviewManager.deleteWebview(props.webview.id);
+  }
+
   return (
     <div
       class="onglet"
@@ -45,9 +54,10 @@ export function Onglet(props: OngletProps): JSXElement {
       onDragStart={onDragStart}
       onDragEnter={onDragEnter}
       onDragEnd={onDragEnd}
+      onClick={onClick}
     >
-      <p>{props.name}</p>
-      <div class="onglet-close">
+      <p>{props.webview.name}</p>
+      <div class="onglet-close" onClick={onClickClose}>
         <CloseFilledCircleIcon />
       </div>
     </div>

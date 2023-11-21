@@ -1,16 +1,20 @@
-import type { Component } from "solid-js";
+import { type Component, onMount } from "solid-js";
 import { HeaderApp } from "./components/header/Header";
-import { WebContent } from "./views/WebContent";
 
-import { WebviewManager } from "./webview.manager";
+import { WebviewManager, webviews } from "./webview.manager";
+import { WebviewWrapper } from "./views/web-content/WebviewWrapper";
+import { OngletListWrapper } from "./components/onglets/OngletListWrapper";
 
 const App: Component = () => {
-  console.log(WebviewManager.newView());
+  onMount(() => {
+    if (webviews().length == 0) WebviewManager.newView({});
+  });
 
   return (
     <main class="container">
+      <OngletListWrapper />
       <HeaderApp />
-      <WebContent src="https://www.google.com" />
+      <WebviewWrapper />
     </main>
   );
 };

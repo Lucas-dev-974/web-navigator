@@ -1,0 +1,28 @@
+.onglet {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  min-width: 150px;
+  border: 0.5px solid rgba(255, 255, 255, 0.312);
+  border-radius: 6px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.onglet-close {
+  width: 15px;
+  cursor: pointer;
+  fill: #D04343;
+  transition: all 1s;
+}
+
+.onglet-close:hover {
+ fill: #9c2626;
+}
+.onglet-list{
+  display: flex;
+  gap: 5px;
+  padding: 5px 0;
+  background-color: var(--dark-light);
+  border-bottom: 0.0001em solid rgba(86, 66, 27, 0.315)
+}

@@ -1,0 +1,6 @@
+.web-content{
+  width: 99vw;
+  height: calc(100vh - 70px);
+  border: none;
+  outline: none;
+}

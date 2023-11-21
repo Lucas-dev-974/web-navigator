@@ -40,7 +40,7 @@ export function Onglet(props: OngletProps): JSXElement {
   }
 
   function onClick(): void {
-    setCurrentWeview();
+    setCurrentWeview(props.webview);
   }
 
   function onClickClose(): void {

@@ -5,6 +5,7 @@ import { IconSizeEnum, IconWrapper } from "../logo-wrapper/IconWrapper";
 import Versions from "../Versions";
 
 import "./Header.css";
+import { currentWebview } from "@renderer/webview.manager";
 
 export function HeaderApp(): JSXElement {
   return (
@@ -14,7 +15,7 @@ export function HeaderApp(): JSXElement {
       </section>
 
       <section>
-        <SearchBar defaultValue="" />
+        <SearchBar defaultValue={currentWebview()?.src as string} />
       </section>
 
       <section>

@@ -22,6 +22,8 @@
   "dependencies": {
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
+    "electron-store": "^8.1.0",
+    "electron-tabs": "^1.0.2",
     "electron-updater": "^6.1.1"
   },
   "devDependencies": {

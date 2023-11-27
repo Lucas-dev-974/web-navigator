@@ -1,0 +1,2 @@
+-- solidJS  compile component by component
+https://github.com/solidjs/solid/discussions/1685

@@ -15,9 +15,8 @@ export function HeaderApp(): JSXElement {
       </section>
 
       <section>
-        <SearchBar defaultValue={currentWebview()?.src as string} />
+        <SearchBar defaultValue={currentWebview()?.src ?? ""} />
       </section>
-
       <section>
         <Versions />
       </section>

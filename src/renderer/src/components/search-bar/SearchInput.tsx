@@ -16,16 +16,13 @@ export function SearchBar(props: SearchBarProps): JSXElement {
 
   function onInput(value: string): void {
     bufferSrc = value;
-    console.log("buffer src:", bufferSrc);
   }
 
   function onKeyPress(key: string): void {
     if (key == "Enter") {
       setCurrentWeview((prev) => {
         if (!prev) return prev;
-        const datas = { ...prev };
-        datas.src = bufferSrc;
-        return datas;
+        return { ...prev, src: bufferSrc };
       });
     }
   }

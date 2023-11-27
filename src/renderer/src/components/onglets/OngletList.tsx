@@ -1,6 +1,6 @@
-import { webviews } from "@renderer/webview.manager";
 import { For, JSXElement } from "solid-js";
 import { Onglet } from "./Onglet";
+import { webviews } from "@renderer/webview.manager";
 
 export function OngletList(): JSXElement {
   return (

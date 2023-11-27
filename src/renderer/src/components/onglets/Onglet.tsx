@@ -1,8 +1,13 @@
 import { CloseFilledCircleIcon } from "@renderer/icons/CloseFilledCircleIcon";
-import { JSXElement, createSignal } from "solid-js";
+import { JSXElement, createEffect, createSignal, onMount } from "solid-js";
 
 import "./Onglet.css";
-import { WebviewManager, WebviewType, setCurrentWeview } from "@renderer/webview.manager";
+import {
+  WebviewManager,
+  WebviewType,
+  currentWebview,
+  setCurrentWeview
+} from "@renderer/webview.manager";
 
 interface OngletProps {
   webview: WebviewType;
@@ -11,6 +16,19 @@ interface OngletProps {
 const [ondrag, setondrag] = createSignal<HTMLDivElement>();
 
 export function Onglet(props: OngletProps): JSXElement {
+  const [ongletElement, setOngletElement] = createSignal<HTMLElement>();
+  onMount(() => {
+    const ongletElement = document.getElementById("onglet-" + String(props.webview.id));
+    setOngletElement(ongletElement ?? undefined);
+  });
+
+  createEffect(() => {
+    if (currentWebview()) {
+      if (currentWebview()?.id == props.webview.id) ongletElement()?.classList.add("active");
+      else ongletElement()?.classList.remove("active");
+    }
+  });
+
   function onDragEnter(event: Event): void {
     const target: HTMLDivElement = event.target as HTMLDivElement;
     if (ondrag() && target != ondrag()) {
@@ -49,6 +67,7 @@ export function Onglet(props: OngletProps): JSXElement {
 
   return (
     <div
+      id={"onglet-" + String(props.webview.id)}
       class="onglet"
       draggable="true"
       onDragStart={onDragStart}

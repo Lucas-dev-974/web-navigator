@@ -1,20 +1,18 @@
-import { type Component, onMount } from "solid-js";
+/* eslint-disable solid/self-closing-comp */
+import { type Component } from "solid-js";
 import { HeaderApp } from "./components/header/Header";
+// import { TabOptions } from "electron-tabs";
 
-import { WebviewManager, webviews } from "./webview.manager";
-import { WebviewWrapper } from "./views/web-content/WebviewWrapper";
+import "electron-tabs";
 import { OngletListWrapper } from "./components/onglets/OngletListWrapper";
+import { WebviewList } from "./views/webview/WebviewList";
 
 const App: Component = () => {
-  onMount(() => {
-    if (webviews().length == 0) WebviewManager.newView({});
-  });
-
   return (
     <main class="container">
-      <OngletListWrapper />
       <HeaderApp />
-      <WebviewWrapper />
+      <OngletListWrapper />
+      <WebviewList />
     </main>
   );
 };

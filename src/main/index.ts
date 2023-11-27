@@ -13,24 +13,11 @@ function createWindow(): void {
     ...(process.platform === "linux" ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, "../preload/index.js"),
-      sandbox: false
+      sandbox: false,
+      webviewTag: true
     }
   });
 
-  //remove X-Frame-Options headers on all incoming requests.
-  mainWindow.webContents.session.webRequest.onHeadersReceived(
-    { urls: ["*://*/*"] },
-    (details, callback) => {
-      if (details && details.responseHeaders) {
-        if (details.responseHeaders["X-Frame-Options"]) {
-          delete details.responseHeaders["X-Frame-Options"];
-        } else if (details.responseHeaders["x-frame-options"]) {
-          delete details.responseHeaders["x-frame-options"];
-        }
-      }
-      callback({ cancel: false, responseHeaders: details.responseHeaders });
-    }
-  );
 
   mainWindow.on("ready-to-show", () => {
     mainWindow.show();

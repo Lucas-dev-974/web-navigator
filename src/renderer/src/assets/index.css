@@ -1,6 +1,29 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Chivo:wght@100&family=Mulish:wght@200;300;400;500;600;700;800&family=Nunito:wght@300&display=swap"); */
 @import "./root.css";
 
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: transparent; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
 body {
   display: flex;
   flex-direction: column;

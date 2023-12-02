@@ -11,11 +11,11 @@ export function HeaderApp(): JSXElement {
   return (
     <header class="header-app">
       <section>
-        <IconWrapper icon={<LogoIcon />} size={IconSizeEnum.large} />
+        <SearchBar defaultValue={currentWebview()?.src ?? ""} />
       </section>
 
       <section>
-        <SearchBar defaultValue={currentWebview()?.src ?? ""} />
+        <IconWrapper icon={<LogoIcon />} size={IconSizeEnum.large} />
       </section>
       <section>
         <Versions />

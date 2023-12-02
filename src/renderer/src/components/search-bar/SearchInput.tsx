@@ -13,7 +13,9 @@ interface SearchBarProps {
 }
 
 export function SearchBar(props: SearchBarProps): JSXElement {
-  const [value, setValue] = createSignal<string>(props.defaultValue);
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const defaultValue = () => props.defaultValue;
+  const [value, setValue] = createSignal<string>(defaultValue());
 
   let bufferSrc: string = props.defaultValue;
 

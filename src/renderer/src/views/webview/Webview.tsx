@@ -41,9 +41,7 @@ export function Webview(props: WebviewType): JSXElement {
   // *  Handle URL change
   createEffect(() => {
     if (currentWebview() && currentWebview()?.id == webview().id) {
-      console.log(currentWebview()?.src, props.src, props.src.length);
       if (currentWebview()?.src != webviewSrc()) {
-        console.log("ok:", webviewSrc());
         setWebviewSrc(currentWebview()?.src);
       }
     }

@@ -23,10 +23,6 @@ export function TextInput(props: TextInputProps): JSXElement {
     if (props.onKeyPress) props.onKeyPress(key);
   }
 
-  let pattern: { pattern: string } | undefined;
-  // eslint-disable-next-line solid/reactivity
-  if (mergedProps.type == "url") pattern = { pattern: "https://.*" };
-
   return (
     <input
       class="text-input"
@@ -35,7 +31,6 @@ export function TextInput(props: TextInputProps): JSXElement {
       onKeyPress={onKeyPress}
       value={props.defautlValue ?? ""}
       placeholder={props.placeholder}
-      {...pattern}
     />
   );
 }

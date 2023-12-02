@@ -1,17 +1,20 @@
-import { JSXElement } from "solid-js";
+import { JSXElement, createSignal } from "solid-js";
 import { TextInput } from "../text-input/TextInput";
 
 import { LoopIcon } from "@renderer/icons/LoopIcon";
 import { IconSizeEnum, IconWrapper } from "../logo-wrapper/IconWrapper";
 
 import "./SearchInput.css";
-import { setCurrentWeview } from "@renderer/webview.manager";
+import { WebviewManager, currentWebview, setCurrentWeview } from "@renderer/webview.manager";
+import { UrlUtils } from "@renderer/utils/url.utils";
 
 interface SearchBarProps {
   defaultValue: string;
 }
 
 export function SearchBar(props: SearchBarProps): JSXElement {
+  const [value, setValue] = createSignal<string>(props.defaultValue);
+
   let bufferSrc: string = props.defaultValue;
 
   function onInput(value: string): void {
@@ -20,10 +23,14 @@ export function SearchBar(props: SearchBarProps): JSXElement {
 
   function onKeyPress(key: string): void {
     if (key == "Enter") {
-      setCurrentWeview((prev) => {
-        if (!prev) return prev;
-        return { ...prev, src: bufferSrc };
-      });
+      if (!currentWebview()) WebviewManager.newView({ src: UrlUtils.parseInputToUrl(bufferSrc) });
+      else {
+        setCurrentWeview((prev) => {
+          if (!prev) return prev;
+          return { ...prev, src: UrlUtils.parseInputToUrl(bufferSrc) };
+        });
+      }
+      setValue(UrlUtils.cleanUrl(UrlUtils.parseInputToUrl(bufferSrc)));
     }
   }
 
@@ -33,7 +40,7 @@ export function SearchBar(props: SearchBarProps): JSXElement {
         type="url"
         onInput={onInput}
         placeholder="https://google.com"
-        defautlValue={props.defaultValue}
+        defautlValue={value()}
         onKeyPress={onKeyPress}
       />
       <IconWrapper icon={<LoopIcon />} size={IconSizeEnum.large} />
